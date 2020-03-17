@@ -11,26 +11,18 @@ public class LoginForm {
 
     private WebElement nicknameText;
 
-    private String login = "eji83937@bcaoo.com";
-    private String password = "123321123";
+    private String login;
+    private String password;
 
-    private String onlinerId = "2978598";
+    public LoginForm(String login, String password) {
+        this.login = login;
+        this.password = password;
+    }
 
     public void login(){
         loginTextField.sendKeys(login);
         passwordTextField.sendKeys(password);
         loginButton.click();
-    }
-
-    public boolean isLogIn(){
-        String nicknameOnSite = "";
-        try {
-            nicknameText = Browser.getDriver().findElement(By.xpath("//div[contains(@class, 'b-top-profile__name')]/a"));
-            nicknameText.getText();
-        } catch (Exception e){
-            return false;
-        }
-        return onlinerId.equals(nicknameText);
     }
 
 }

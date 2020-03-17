@@ -6,14 +6,30 @@ import org.testng.annotations.Test;
 import pages.LoginForm;
 import pages.MainPage;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class OnlinerTest {
 
+    private String login;
+    private String password;
+
     @BeforeMethod
-    public void setUp(){
+    public void setUp() throws Exception {
+        FileInputStream fileInputStream = new FileInputStream("src/main/resources/test_settings.properties");
+        Properties properties = new Properties();
+        properties.load(fileInputStream);
+        String browser = properties.getProperty("browser");
+        login = properties.getProperty("login");
+        password = properties.getProperty("password");
+
+        Browser.setBrowser(Browser.Driver.Chrome);
+
         WebDriver driver = Browser.getDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         driver.get("https://www.onliner.by/");
     }
 
@@ -24,14 +40,12 @@ public class OnlinerTest {
 
         mainPage.clickLogIn();
 
-        LoginForm loginForm = new LoginForm();
+        LoginForm loginForm = new LoginForm(login, password);
 
         loginForm.login();
 
-        //TODO what happens?
-        Assert.assertTrue(loginForm.isLogIn());
+        mainPage.navigateToPage();
 
-        //TODO what happens?
-        Assert.assertTrue(mainPage.navigateToPage());
+        mainPage.returnToMainPage();
     }
 }
