@@ -5,11 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class LoginForm {
-    private WebElement loginTextField = Browser.getDriver().findElement(By.xpath("//input[contains(@class, 'auth-input') and @type='text']"));
-    private WebElement passwordTextField = Browser.getDriver().findElement(By.xpath("//input[contains(@class, 'auth-input') and @type='password']"));
-    private WebElement loginButton = Browser.getDriver().findElement(By.xpath("//button[contains(@class, 'auth-button')]"));
 
-    private WebElement nicknameText;
 
     private String login;
     private String password;
@@ -20,6 +16,10 @@ public class LoginForm {
     }
 
     public void login(){
+        WebElement loginTextField = Browser.getDriver().findElement(By.xpath("//input[contains(@class, 'auth-input') and @type='text']"));
+        WebElement passwordTextField = Browser.getDriver().findElement(By.xpath("//input[contains(@class, 'auth-input') and @type='password']"));
+        WebElement loginButton = Browser.getDriver().findElement(By.xpath("//button[contains(@class, 'auth-button')]"));
+
         loginTextField.sendKeys(login);
         passwordTextField.sendKeys(password);
         loginButton.click();

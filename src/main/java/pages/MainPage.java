@@ -14,12 +14,13 @@ import java.util.logging.Logger;
 
 public class MainPage {
 
-    private WebElement loginButton = Browser.getDriver().findElement(By.xpath("//div[@class='auth-bar__item auth-bar__item--text']"));
+
 
     Logger logger = Logger.getLogger(getClass().getSimpleName());
 
 
     public void clickLogIn(){
+        WebElement loginButton = Browser.getDriver().findElement(By.xpath("//div[@class='auth-bar__item auth-bar__item--text']"));
         loginButton.click();
     }
 

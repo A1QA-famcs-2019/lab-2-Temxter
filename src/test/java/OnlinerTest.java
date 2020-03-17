@@ -21,11 +21,11 @@ public class OnlinerTest {
         FileInputStream fileInputStream = new FileInputStream("src/main/resources/test_settings.properties");
         Properties properties = new Properties();
         properties.load(fileInputStream);
-        String browser = properties.getProperty("browser");
+        String browser = properties.getProperty("browser"); //Chrome, Firefox, IE
         login = properties.getProperty("login");
         password = properties.getProperty("password");
 
-        Browser.setBrowser(Browser.Driver.Chrome);
+        Browser.setBrowser(Browser.Driver.valueOf(browser));
 
         WebDriver driver = Browser.getDriver();
         driver.manage().window().maximize();
