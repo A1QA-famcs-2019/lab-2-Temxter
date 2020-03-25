@@ -40,9 +40,9 @@ public class OnlinerTest {
 
         mainPage.clickLogIn();
 
-        LoginForm loginForm = new LoginForm(login, password);
+        LoginForm loginForm = new LoginForm();
 
-        loginForm.login();
+        loginForm.login(login, password);
 
         mainPage.navigateToPage();
 

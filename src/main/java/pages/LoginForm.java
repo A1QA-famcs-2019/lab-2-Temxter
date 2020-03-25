@@ -1,24 +1,17 @@
 package pages;
 
-import driver.Browser;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import elements.Button;
+import elements.TextField;
 
 public class LoginForm {
 
-
-    private String login;
-    private String password;
-
-    public LoginForm(String login, String password) {
-        this.login = login;
-        this.password = password;
+    public LoginForm() {
     }
 
-    public void login(){
-        WebElement loginTextField = Browser.getDriver().findElement(By.xpath("//input[contains(@class, 'auth-input') and @type='text']"));
-        WebElement passwordTextField = Browser.getDriver().findElement(By.xpath("//input[contains(@class, 'auth-input') and @type='password']"));
-        WebElement loginButton = Browser.getDriver().findElement(By.xpath("//button[contains(@class, 'auth-button')]"));
+    public void login(String login, String password){
+        TextField loginTextField = new TextField("login", "//input[contains(@class, 'auth-input') and @type='text']");
+        TextField passwordTextField = new TextField("password", "//input[contains(@class, 'auth-input') and @type='password']");
+        Button loginButton = new Button("login button", "//button[contains(@class, 'auth-button')]");
 
         loginTextField.sendKeys(login);
         passwordTextField.sendKeys(password);
