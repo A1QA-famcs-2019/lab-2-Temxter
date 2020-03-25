@@ -30,13 +30,13 @@ public class NavigationRandomElement {
     }
 
     public String getText(){
-        if (randomWebElement == null || initRandomWebElement())
+        if (randomWebElement != null || initRandomWebElement())
             return randomWebElement.getText();
         return "";
     }
 
     public void click(){
-        if (randomWebElement == null || initRandomWebElement())
+        if (randomWebElement != null || initRandomWebElement())
             randomWebElement.click();
     }
 
